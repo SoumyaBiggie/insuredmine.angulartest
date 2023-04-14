@@ -1,24 +1,29 @@
-.card{
+.card {
     display: flex;
     justify-content: center;
 }
-.button_class{
+
+.button_class {
     display: flex;
     justify-content: space-evenly;
 }
+
 // For Dropdown Hover
 .mat-option:hover:not(.mat-option-disabled) {
     background: rgb(48 197 233 / 30%);
 }
+
 //For Key Up and Down
 .mat-option.mat-active {
     background: rgb(48 197 233 / 30%);
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
 }
+
 .mat-chip.mat-standard-chip {
     background-color: #efe61bc2;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
 }
+
 // Text Area Border
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
     color: rgb(205 214 11 / 87%);
@@ -28,6 +33,36 @@
 .mat-raised-button.mat-accent {
     background-color: #efe61bc2;
 }
+
 .mat-stroked-button.mat-accent {
     color: #efe61bc2;
+}
+.elasticResDiv {
+    max-height: 300px;
+    position: absolute;
+    width: 100%;
+    z-index: 99999 !important;
+    overflow: auto;
+    cursor: pointer;
+    background: aliceblue;
+    // top: 50px;
+    box-shadow: 1px 1px 5px;
+
+    ul {
+        li {
+            cursor: pointer;
+            height: 25px;
+            list-style-type: none;
+        }
+
+        li:hover {
+            background-color: #00bed4;
+            color: white;
+            border-color: #00bed4;
+        }
+    }
+}
+
+textarea.active-class {
+    font-weight: 500;
 }

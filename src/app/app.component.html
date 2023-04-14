@@ -7,13 +7,13 @@
                 <form [formGroup]="user_insertForm" autocomplete="off">
                     <div class="form-feild-content">
                         <mat-form-field class="full-width" appearance="outline">
-                            <div class="form-style" [style]=" selectData.length? {
-                                background: '#f6f5d18f',
-                                border: '0px solid #dcdcdc'
-                              }: null">
-                                <textarea matInput rows="5" cols="60" type="text" (keyup)="displayAssignMethod($event)"
-                                    [matAutocomplete]="auto" [matAutocompleteDisabled]="useroptionList"
-                                    *ngIf="showInputField" #userName formControlName="user_name">
+                            <div class="form-style">
+                                <textarea matInput rows="5" cols="60" type="text" (input)="displayAssignMethod($event)"
+                                    [(ngModel)]="notevalue" [ngClass]="{'active-class': checkWord == true}" #userName
+                                    formControlName="user_name" [style]="showInputField == true? {
+                                        background: '#f6f5d18f',
+                                        border: '0px solid #dcdcdc'
+                                      }: null">
                                 </textarea>
                                 <!-- Chip List -->
                                 <div class="chip-list-wrapper">
@@ -28,11 +28,21 @@
                                     </mat-chip-list>
                                 </div>
                                 <!-- End -->
+                                
                                 <!-- Drop Down list -->
-                                <mat-autocomplete #auto="matAutocomplete">
+
+                                <!-- <mat-autocomplete #auto="matAutocomplete">
                                     <mat-option (onSelectionChange)="eSelectUser(data)" #matOption
                                         *ngFor="let data of masterDataSelect" [value]="data">{{data}}</mat-option>
-                                </mat-autocomplete>
+                                </mat-autocomplete> -->
+
+                                <div #elasticResDiv class="elasticResDiv" *ngIf="showAutcompleteList === true">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" *ngFor="let data of masterDataSelect"
+                                            (click)="eSelectUser(data)">
+                                            {{data}}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </mat-form-field>
                         <!-- End Of Form-feild -->
