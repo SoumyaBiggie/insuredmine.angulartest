@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
@@ -13,71 +13,63 @@ export class AppComponent implements OnInit {
   masterDataSelect: any = [];
   selectData: any = [];
   useroptionList: boolean = true;
-  selectedUser: any;
 
   @ViewChild(MatAutocompleteTrigger) autocomplete: MatAutocompleteTrigger;
+  @ViewChild('userName') userName:ElementRef;
+  showInputField: boolean = true;
+
   constructor() { }
+
   ngOnInit(): void {
+    // Form Declaration
     this.user_insertForm = new FormGroup({
       user_name: new FormControl("", [Validators.required]),
     });
     this.masterDataSelect = ["Gina Williams", "Jake Williams", "Jamie John", "John Doe", "Jeff Stewart", "Paula m. Keith"]
   }
-  data = [];
-  toggleSelection(e: any) { };
-  displayAssignMethod(e: any) {
-    // console.log(e.target.value);
+
+  displayAssignMethod = (e: any) => {
     if (e.target.value == '@') {
       this.autocomplete.openPanel();
     }
     else {
       this.autocomplete.closePanel();
     }
-    // console.log(this.useroptionList);
-
-
   };
-  eSelectUser(data: any) {
-    this.selectedUser = data;
-    this.selectData.push(this.selectedUser);
+  eSelectUser(data: any) {debugger
+    console.log(data);
+    if (!this.selectData.includes(data)) {
+      this.selectData.push(data);
+    }
     console.log(this.selectData);
     this.user_insertForm.reset();
   }
-  ngAfterViewChecked() {
-    console.log(this.user_insertForm.get('user_name')?.value);
-    // if (this.user_insertForm.get('user_name')?.value != null || this.user_insertForm.get('user_name')?.value != undefined || this.user_insertForm.get('user_name')?.value != '') {
 
-    if (this.user_insertForm.get('user_name')?.value == '@') {
-      if (!this.selectData.includes(this.user_insertForm.get('user_name')?.value)) {
-        this.selectData.push(this.user_insertForm.get('user_name')?.value);
-      }
-      // else{
-      //   // this.selectData.pop(0);
-      // }
-     
-      // this.user_insertForm.reset();
+  // remove_chip
+  removeVal(i: any) {
+    // this.selectData = this.selectData.filter(function (item: any) {
+    //   if (item !== event) {
+    //     return item;
+    //   }
+    // });
+    const index = this.selectData.indexOf(i);
     
-    console.log(this.selectData, "WWWW");
+    console.log(index);
+    if (index > -1) {
+      this.selectData.splice(index, 1);
     }
-
-  }
-  choosedUserName = (event: any) => {
-    console.log(event);
-
-  }
-  removeChip = (event:any) =>{
-    console.log(event);
-    this.selectData = this.selectData.filter(function (item: any) {
-      if (item !== event) {
-        return item;
-      }
-    });
     console.log(this.selectData);
-    
-
   }
+  
+  // reset Button
   resetTextarea() {
     this.selectData = [];
   }
+  // Add Note
+  add_coloum = () => {
+    this.showInputField = true;
+    setTimeout(() => this.userName.nativeElement.focus());
+  }
+
 }
 

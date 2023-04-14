@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-evenly;
 }
-// For Hover
+// For Dropdown Hover
 .mat-option:hover:not(.mat-option-disabled) {
     background: rgb(48 197 233 / 30%);
 }
@@ -23,6 +23,7 @@
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
     color: rgb(205 214 11 / 87%);
 }
+
 // Button CSS
 .mat-raised-button.mat-accent {
     background-color: #efe61bc2;

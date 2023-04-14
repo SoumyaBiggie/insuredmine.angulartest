@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "soumyademotest": {
+    "SoumyaTestdemo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/soumyademotest",
+            "outputPath": "dist/soumya-testdemo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -69,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "soumyademotest:build:production"
+              "browserTarget": "SoumyaTestdemo:build:production"
             },
             "development": {
-              "browserTarget": "soumyademotest:build:development"
+              "browserTarget": "SoumyaTestdemo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "soumyademotest:build"
+            "browserTarget": "SoumyaTestdemo:build"
           }
         },
         "test": {
@@ -96,6 +97,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -105,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": "47cade05-0958-4263-9a03-0392e9257dcf"
+    "analytics": "3228c6c4-91f2-44f9-9548-c3b4c68816e0"
   }
 }

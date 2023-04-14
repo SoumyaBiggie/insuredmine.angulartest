@@ -1,43 +1,55 @@
+<!-- Main Container Starts -->
 <div class="container">
     <mat-card class="card">
         <mat-card-content>
             <div class="col-sm-12">
+                <!-- user_insert Form Starts -->
                 <form [formGroup]="user_insertForm" autocomplete="off">
-                    <div class="col-sm-12">
-                        <!-- <mat-label for="assignMeth0d">Select user </mat-label> -->
+                    <div class="form-feild-content">
                         <mat-form-field class="full-width" appearance="outline">
-                            <textarea matInput rows="5" cols="60" type="text" (keyup)="displayAssignMethod($event)"
-                                [matAutocomplete]="auto" [matAutocompleteDisabled]="useroptionList"
-                                formControlName="user_name">
-                            </textarea>
-                            <div class="chip-list-wrapper">
-                                <mat-chip-list #chipList>
-                                    <ng-container *ngFor="let select of selectData ;">
-                                        <mat-chip (click)="removeChip(select)">
-                                            {{ select }}
-                                            <mat-icon class="mat-chip-remove">cancel</mat-icon>
-                                        </mat-chip>
-                                    </ng-container>
-                                </mat-chip-list>
+                            <div class="form-style" [style]=" selectData.length? {
+                                background: '#f6f5d18f',
+                                border: '0px solid #dcdcdc'
+                              }: null">
+                                <textarea matInput rows="5" cols="60" type="text" (keyup)="displayAssignMethod($event)"
+                                    [matAutocomplete]="auto" [matAutocompleteDisabled]="useroptionList"
+                                    *ngIf="showInputField" #userName formControlName="user_name">
+                                </textarea>
+                                <!-- Chip List -->
+                                <div class="chip-list-wrapper">
+                                    <mat-chip-list #chipList>
+                                        <ng-container *ngFor="let select of selectData;let i as index">
+                                            <mat-chip>
+                                                {{ select }}
+                                                <mat-icon class="mat-chip-remove"
+                                                    (click)="removeVal(i)">cancel</mat-icon>
+                                            </mat-chip>
+                                        </ng-container>
+                                    </mat-chip-list>
+                                </div>
+                                <!-- End -->
+                                <!-- Drop Down list -->
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option (onSelectionChange)="eSelectUser(data)" #matOption
+                                        *ngFor="let data of masterDataSelect" [value]="data">{{data}}</mat-option>
+                                </mat-autocomplete>
                             </div>
-    
                         </mat-form-field>
-    
-                        <mat-autocomplete #auto="matAutocomplete">
-                            <mat-option #matOption *ngFor="let data of masterDataSelect" [value]="data"
-                                (click)="eSelectUser(data)">{{ data}}</mat-option>
-                        </mat-autocomplete>
+                        <!-- End Of Form-feild -->
                     </div>
                     <div class="button_class">
-                        <!-- <div class="col-sm-6"> -->
-                            <button mat-stroked-button color="accent">+ Add Note</button>
-                        <!-- </div> -->
-                        <!-- <div class="col-sm-6"> -->
-                            <button mat-raised-button color="accent" (click)="resetTextarea">Reset</button>
-                        <!-- </div> -->
+                        <button mat-stroked-button color="accent" (click)="add_coloum()">+ Add Note</button>
+                        <button mat-raised-button color="accent" (click)="resetTextarea()">Reset</button>
                     </div>
                 </form>
+                <!-- End Of user_insert Form -->
             </div>
         </mat-card-content>
     </mat-card>
 </div>
+<!-- Container Ends -->
+
+
+
+
+<!-- Application is mainly Based on Angular material and Javascript/Typescript  -->
