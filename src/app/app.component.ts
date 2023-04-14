@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       this.autocomplete.closePanel();
     }
   };
-  eSelectUser(data: any) {debugger
+  eSelectUser(data: any) {
     console.log(data);
     if (!this.selectData.includes(data)) {
       this.selectData.push(data);
@@ -47,14 +47,7 @@ export class AppComponent implements OnInit {
 
   // remove_chip
   removeVal(i: any) {
-    // this.selectData = this.selectData.filter(function (item: any) {
-    //   if (item !== event) {
-    //     return item;
-    //   }
-    // });
-    const index = this.selectData.indexOf(i);
-    
-    console.log(index);
+    const index = this.selectData.indexOf(i);    
     if (index > -1) {
       this.selectData.splice(index, 1);
     }
