@@ -1,0 +1,43 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-content>
+            <div class="col-sm-12">
+                <form [formGroup]="user_insertForm" autocomplete="off">
+                    <div class="col-sm-12">
+                        <!-- <mat-label for="assignMeth0d">Select user </mat-label> -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <textarea matInput rows="5" cols="60" type="text" (keyup)="displayAssignMethod($event)"
+                                [matAutocomplete]="auto" [matAutocompleteDisabled]="useroptionList"
+                                formControlName="user_name">
+                            </textarea>
+                            <div class="chip-list-wrapper">
+                                <mat-chip-list #chipList>
+                                    <ng-container *ngFor="let select of selectData ;">
+                                        <mat-chip (click)="removeChip(select)">
+                                            {{ select }}
+                                            <mat-icon class="mat-chip-remove">cancel</mat-icon>
+                                        </mat-chip>
+                                    </ng-container>
+                                </mat-chip-list>
+                            </div>
+    
+                        </mat-form-field>
+    
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option #matOption *ngFor="let data of masterDataSelect" [value]="data"
+                                (click)="eSelectUser(data)">{{ data}}</mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="button_class">
+                        <!-- <div class="col-sm-6"> -->
+                            <button mat-stroked-button color="accent">+ Add Note</button>
+                        <!-- </div> -->
+                        <!-- <div class="col-sm-6"> -->
+                            <button mat-raised-button color="accent" (click)="resetTextarea">Reset</button>
+                        <!-- </div> -->
+                    </div>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
